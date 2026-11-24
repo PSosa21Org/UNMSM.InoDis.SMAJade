@@ -1,0 +1,27 @@
+services:
+  referee:
+    build:
+      context: .
+    command:
+      - mvn
+      - -q
+      - exec:java
+      - -Dexec.args=referee Universitario Alianza
+    environment:
+      JADE_MAIN_PORT: "1099"
+    expose:
+      - "1099"
+
+  workers:
+    build:
+      context: .
+    command:
+      - mvn
+      - -q
+      - exec:java
+      - -Dexec.args=workers
+    environment:
+      JADE_MAIN_HOST: referee
+      JADE_MAIN_PORT: "1099"
+    depends_on:
+      - referee
