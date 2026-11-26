@@ -6,7 +6,7 @@ services:
       - mvn
       - -q
       - exec:java
-      - -Dexec.args=referee Universitario Alianza
+      - -Dexec.args=referee Universitario AlianzaLima
     environment:
       JADE_MAIN_PORT: "1099"
     expose:
